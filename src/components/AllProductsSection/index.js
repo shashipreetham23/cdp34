@@ -100,7 +100,7 @@ class AllProductsSection extends Component {
       searchInput,
       activeRatingId,
     } = this.state
-    const apiUrl = `https://apis.ccbp.in/products?sort_by=${activeOptionId}&category=${activeCategoryId}&title_search=${searchInput}`
+    const apiUrl = `https://apis.ccbp.in/products?sort_by=${activeOptionId}&category=${activeCategoryId}&title_search=${searchInput}&rating=${activeRatingId}`
     const options = {
       headers: {
         Authorization: `Bearer ${jwtToken}`,
@@ -225,7 +225,7 @@ class AllProductsSection extends Component {
     this.getProducts()
   }
 
-  changeSearchInput = () => {
+  changeSearchInput = searchInput => {
     this.setState({searchInput})
   }
 
@@ -242,6 +242,7 @@ class AllProductsSection extends Component {
           changeSearchInput={this.changeSearchInput}
           enterSearchInput={this.enterSearchInput}
           activeCategoryId={activeCategoryId}
+          activeRatingId={activeRatingId}
           changeCategory={this.changeCategory}
           changeRating={this.changeRating}
           clearFilters={this.clearFilters}
